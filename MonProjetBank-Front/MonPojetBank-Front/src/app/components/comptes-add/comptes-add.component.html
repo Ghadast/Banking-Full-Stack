@@ -1,0 +1,31 @@
+<form class="form-horizontal mt-2" #f="ngForm" (ngSubmit)="OuvrirCompte()" >
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="numero">Numéro de compte:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Entrer numéro de compte"  required
+      id="numero" name="numero" [(ngModel)]="compte.numero" #numero="ngModel" >
+       <div class="alert alert-danger" *ngIf="numero.touched && numero.invalid">Le numéro est obligatoire !</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="prop">Nom du propriétaire :</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" required placeholder="Entrer le nom du propriétaire"
+       id="prop"  name="prop" [(ngModel)]="compte.proprietaire" #propr="ngModel">
+      <div class="alert alert-danger" *ngIf="propr.touched && propr.invalid">Le nom est obligatoire !</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="solde">Solde initial:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="solde" [(ngModel)]="compte.solde"
+      placeholder="Entrer le solde" name="solde" #sol="ngModel" required >
+      <div class="alert alert-danger" *ngIf="sol.touched && sol.invalid">Le solde est obligatoire !</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-info" [disabled]="!f.valid">Créer le compte</button>
+    </div>
+  </div>
+</form>
